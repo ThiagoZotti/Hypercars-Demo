@@ -1,6 +1,6 @@
 # JC Veículos
 
-Landing page da JC Veículos, Lot. Ville D’Monte Alegre, Paty do Alferes — RJ. Preto e branco, PNGs transparentes e botões com acabamento metálico. Conteúdo sempre visível, sem revelação pela rolagem.
+Landing page da JC Veículos, Lot. Ville D’Monte Alegre, Paty do Alferes — RJ. Preto e branco com acentos do verde da logo original, PNGs transparentes e botões com acabamento metálico. Conteúdo sempre visível, sem revelação pela rolagem.
 
 Site estático em HTML, CSS e JavaScript, publicado em https://thiagozotti.github.io/Hypercars-Demo/ via GitHub Pages (`main`, raiz).
 
@@ -9,6 +9,7 @@ Site estático em HTML, CSS e JavaScript, publicado em https://thiagozotti.githu
 - Cinco modelos ilustrativos: Civic, C180 Coupé, Corolla, Saveiro e Hilux; filtro por sedãs, cupês e picapes.
 - Vitrine escura com percurso horizontal vinculado à rolagem no desktop; setas, teclado e gesto de deslizar no celular.
 - Entrada animada no hero e movimentos de profundidade nos cartões, com opção de pausar e suporte a movimento reduzido.
+- Hero inspirado no mockup aprovado: logo original da JC no cabeçalho, C180 Coupé ilustrativa, cenário arquitetônico conceitual e a chamada “O próximo carro tem endereço”.
 - Giro real por sequência de imagens: Civic (24 vistas), Corolla e Hilux (31 vistas), carregado ao abrir os detalhes. Arraste, setas e controle por teclado.
 - C180 e Saveiro com fotografia estática.
 - Um único botão por veículo e uma chamada principal na seção de contato.

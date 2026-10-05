@@ -11,3 +11,7 @@ O usuário substituiu a seleção do Instagram por Civic, C180, Corolla, Saveiro
 Prompt final usado na ferramenta integrada imagegen (background-extraction): Remove the entire white canvas and the gray architectural/ground backdrop, preserving only the exact silver two-door C180 Coupé automobile as photographed, including grille/star, headlights, body shape, glass, wheels and photographic reflections. Preserve its front three-quarter left-facing view and proportions. Keep all of the car in frame with slight transparent margins. Do not invent details, alter model, add text, shadow panels, other vehicles or scenery. Output a genuine transparent PNG.
 
 Derivado final atual: assets/car-c180-coupe.png. O recorte anterior permanece em assets/car-c180.png como arquivo de trabalho sem uso no site. As imagens têm finalidade ilustrativa; não indicar vínculo oficial de concessionária nem estoque atual.
+
+## Cenário do hero
+
+`assets/hero-showroom-concept.jpg` é uma versão otimizada da ambientação gerada por IA para o mockup aprovado em 2026-10-05. É uma imagem arquitetônica conceitual e não uma fotografia da loja, da cidade ou de uma localização real específica. O hero identifica cenário e carro como ilustrativos. A logo `assets/jc-logo.jpg` é a imagem original da JC Veículos já presente no projeto.

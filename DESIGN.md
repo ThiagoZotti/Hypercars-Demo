@@ -4,7 +4,7 @@ Landing page de loja de carros 0 km e seminovos em Paty do Alferes — RJ. Nome,
 
 ## Apresentação
 
-Preto e branco, títulos Syne e texto Space Grotesk com fallback local. PNGs transparentes sobre superfícies neutras de showroom. Civic flutuante no hero, sem moldura. Tokens em style.css; refinamento em polish.css. Ink #101010, paper #f7f7f5, white #ffffff, muted #777777, rule #dededb. Gradiente metálico nos botões.
+Preto e branco com um acento verde derivado da logo original. Hero em Barlow Condensed e DM Sans; demais seções em Syne e Space Grotesk com fallback local. PNGs transparentes sobre superfícies neutras de showroom. C180 Coupé no hero, sem moldura. Tokens em style.css; refinamento em polish.css e hero.css. Ink #101010, paper #f7f7f5, white #ffffff, muted #777777, rule #dededb, verde do hero #3aaa45. Gradiente metálico nos botões das seções seguintes.
 
 ## Comportamento
 
@@ -16,4 +16,6 @@ Civic, C180 Coupé, Corolla, Saveiro e Hilux como referências ilustrativas, sem
 
 JavaScript conferido com node --check. Imagens, filtros e giros conferidos no navegador; arraste e controle por teclado funcionais, viewport de 390px sem excesso de largura. Fontes e edição do C180 documentadas em IMAGENS.md.
 
-Atualização visual: hero ocupa a primeira tela sob o cabeçalho; assinatura JC tipográfica e CTA de Instagram discreto; linha da localidade fixa. Movimento de rolagem no carro do hero, marca d'água, foto da experiência e indicador de progresso, sem revelar conteúdo. A vitrine horizontal escura traduz a dinâmica de rolagem do vídeo de referência. C180 substituída pela imagem de catálogo C180 Coupé 2017 indicada pelo usuário, classificada como cupê e com origem creditada.
+Atualização visual: hero ocupa a primeira tela e traz uma ação para a coleção e outra para o Instagram. A vitrine horizontal escura traduz a dinâmica de rolagem do vídeo de referência. C180 substituída pela imagem de catálogo C180 Coupé 2017 indicada pelo usuário, classificada como cupê e com origem creditada.
+
+Hero aprovado em 2026-10-05: logo original `assets/jc-logo.jpg` restaurada no cabeçalho; título “O próximo carro tem endereço” em Barlow Condensed; verde da marca apenas como acento. A C180 Coupé ilustrativa aparece sobre um cenário arquitetônico gerado por IA, identificado no próprio hero como conceitual, sem representar a loja. Arquivo otimizado em `assets/hero-showroom-concept.jpg`. Entrada curta do carro e linha luminosa; parallax leve ao rolar, pausável, com movimento reduzido respeitado. CTA de coleção e ação de Instagram têm propósitos distintos.

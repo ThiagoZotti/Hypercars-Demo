@@ -1,0 +1,49 @@
+/* JC Veículos: cinematic hero approved from the standalone mockup. */
+.header.site-header{position:absolute;top:0;left:0;right:0;height:94px;padding:0 4.5%;background:transparent;border:0;z-index:8;font-family:'DM Sans',Arial,sans-serif}
+.header.site-header::after{content:'';position:absolute;left:4.5%;right:4.5%;bottom:0;height:1px;background:#ffffff30}
+.header .brand-image{display:block;width:168px;height:79px;overflow:hidden;flex:none}
+.header .brand-image img{display:block;width:168px;height:168px;max-width:none;object-fit:contain;transform:translateY(-43px);mix-blend-mode:screen}
+.header.site-header nav{display:flex;gap:clamp(28px,3.3vw,62px);margin-left:auto;color:#f5f5f1}
+.header.site-header nav a{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;transition:color .25s}
+.header.site-header nav a:hover{color:#78ca80}
+.header-location{border-left:1px solid #ffffff32;padding-left:28px;color:#cdcfcd;font-size:10px;font-weight:700;letter-spacing:.13em;white-space:nowrap}
+.cinematic-hero.hero{--jc-green:#3aaa45;position:relative;isolation:isolate;display:flex;flex-direction:column;justify-content:space-between;height:100svh;min-height:620px;padding:94px 4.5% 0;background:#080b09;color:#f5f5f1;overflow:hidden;font-family:'DM Sans',Arial,sans-serif}
+.cinematic-hero .hero-backdrop,.cinematic-hero .hero-shade{position:absolute;inset:0;pointer-events:none}
+.cinematic-hero .hero-backdrop{z-index:-3;background:url('assets/hero-showroom-concept.jpg') center/cover no-repeat;filter:saturate(.76) brightness(.66);transform:translate3d(0,var(--hero-drift,0px),0) scale(1.09);animation:jc-scene-arrive 1.8s ease-out both}
+.cinematic-hero .hero-shade{z-index:-2;background:linear-gradient(90deg,#060908ef 0%,#060908df 28%,#06090868 58%,#06090835 100%),linear-gradient(0deg,#050605c9 0%,transparent 25%,transparent 65%,#0506059c 100%)}
+.cinematic-hero .hero-track{position:absolute;z-index:-1;left:0;bottom:72px;width:44%;height:2px;background:linear-gradient(90deg,transparent,var(--jc-green),transparent);box-shadow:0 0 30px #2fbe48a8;transform-origin:left;animation:jc-track-arrive 1.2s .4s ease both}
+.cinematic-hero .hero-copy{position:relative;z-index:2;width:min(760px,65%);margin:auto 0 4vh;padding:0;pointer-events:auto;animation:none}
+.cinematic-hero .hero-kicker{display:flex;align-items:center;gap:13px;color:#a9c8ad;font-size:10px;font-weight:700;letter-spacing:.21em;margin:0 0 22px;white-space:nowrap}
+.cinematic-hero .hero-kicker span{width:33px;height:2px;flex:none;background:var(--jc-green);box-shadow:0 0 14px var(--jc-green)}
+.cinematic-hero h1{margin:0;max-width:none;font:800 clamp(78px,8vw,150px)/.92 'Barlow Condensed',Impact,sans-serif;letter-spacing:-.037em;text-transform:uppercase}
+.cinematic-hero h1>span,.cinematic-hero h1 em{display:block;white-space:nowrap}
+.cinematic-hero h1 em{font-style:normal;color:transparent;-webkit-text-stroke:1.5px #eceee9;letter-spacing:-.04em}
+.cinematic-hero h1 .period{display:inline;color:var(--jc-green);-webkit-text-stroke:0}
+.cinematic-hero .hero-subhead{max-width:375px;color:#d9dbd6;font-size:15px;line-height:1.6;margin:28px 0 31px}
+.hero-actions{display:flex;align-items:center;gap:29px}
+.hero-primary{min-height:58px;display:inline-flex;align-items:center;gap:35px;background:#f5f5f1;color:#0b0c0b;padding:7px 7px 7px 24px;font-size:11px;font-weight:700;letter-spacing:.025em;white-space:nowrap;transition:transform .25s,background .25s}
+.hero-primary:hover{background:#dcefdc;transform:translateY(-3px)}
+.hero-primary span{display:grid;place-items:center;width:44px;height:44px;background:#101b13;color:#fff;font-size:24px;font-weight:400;transition:transform .25s}
+.hero-primary:hover span{transform:rotate(45deg)}
+.hero-secondary{font-size:11px;font-weight:700;letter-spacing:.03em;border-bottom:1px solid #ffffff92;padding:10px 0;white-space:nowrap}
+.hero-secondary span{display:inline-block;margin-left:10px;font-size:18px;font-weight:400;transition:transform .2s}
+.hero-secondary:hover span{transform:translate(3px,-3px)}
+.hero-car{position:absolute;z-index:1;right:-1%;bottom:7%;width:min(73vw,1080px);height:65%;display:flex;align-items:flex-end;justify-content:flex-end;pointer-events:none;transform:translate3d(0,var(--hero-car-drift,0px),0)}
+.hero-car img{width:100%;height:100%;object-fit:contain;object-position:right bottom;filter:drop-shadow(0 38px 35px #000d);position:relative;z-index:1;animation:jc-hero-car-arrive 1.25s .12s cubic-bezier(.2,.7,.1,1) both}
+.hero-car-glow{position:absolute;right:13%;bottom:11%;width:66%;height:20%;border-radius:50%;background:#d9ead159;filter:blur(45px);transform:rotate(-8deg)}
+.cinematic-hero .hero-foot{height:72px;min-height:72px;border-top:1px solid #ffffff32;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:0;color:#f5f5f1;font-size:9px;font-weight:700;letter-spacing:.12em;font-family:'DM Sans',Arial,sans-serif}
+.hero-address,.hero-caption{white-space:nowrap}
+.hero-caption{color:#b5bab4;font-size:8px}
+.hero-foot-actions{display:flex;align-items:center;gap:16px}
+.cinematic-hero .hero-foot-actions>a{display:block;width:auto;height:auto;border:0;border-radius:0;font-size:23px;color:#78ca80;line-height:1}
+.cinematic-hero .motion-toggle{border:0;background:none;color:#d4d9d4;padding:8px 0;box-shadow:none;font-size:8px;white-space:nowrap}
+.cinematic-hero .motion-toggle:hover{color:#fff;background:none}
+@keyframes jc-hero-car-arrive{from{opacity:0;transform:translate3d(15%,2%,0) scale(.93)}to{opacity:1;transform:translate3d(0,0,0) scale(1)}}
+@keyframes jc-scene-arrive{from{opacity:.4;transform:translate3d(0,0,0) scale(1.13)}to{opacity:1;transform:translate3d(0,var(--hero-drift,0px),0) scale(1.09)}}
+@keyframes jc-track-arrive{from{transform:scaleX(0);opacity:0}to{transform:scaleX(1);opacity:1}}
+@media(max-width:1000px){.header-location{display:none}.cinematic-hero .hero-copy{width:70%;margin-bottom:7vh}.cinematic-hero h1{font-size:clamp(72px,9.5vw,115px)}.hero-car{right:-5%;width:86vw}}
+@media(max-width:700px){.header.site-header{height:86px;padding:0 6%}.header.site-header::after{left:6%;right:6%}.header .brand-image{width:145px;height:68px}.header .brand-image img{width:145px;height:145px;transform:translateY(-38px)}.header.site-header nav{display:none}.header.site-header .menu-button{display:block}.mobile-nav{top:86px}.cinematic-hero.hero{height:auto;min-height:max(740px,100svh);padding:86px 6% 0}.cinematic-hero .hero-copy{width:100%;align-self:flex-start;margin:52px 0 auto;padding:0}.cinematic-hero .hero-kicker{font-size:8px;letter-spacing:.12em;margin-bottom:21px}.cinematic-hero h1{font-size:clamp(70px,15.3vw,106px);line-height:.82}.cinematic-hero h1 em{-webkit-text-stroke:1px #eceee9}.cinematic-hero .hero-subhead{font-size:13px;max-width:245px;line-height:1.55;margin:24px 0 23px}.hero-actions{gap:20px}.hero-primary{min-height:53px;padding-left:17px;gap:17px;font-size:10px}.hero-primary span{height:39px;width:39px}.hero-secondary{font-size:10px}.hero-secondary span{margin-left:4px}.hero-car{right:-22%;bottom:100px;width:112vw;height:39%}.cinematic-hero .hero-foot{height:70px;min-height:70px;font-size:7px}.hero-address{max-width:180px;line-height:1.6;white-space:normal}.hero-caption{display:none}.hero-foot-actions{gap:12px}.cinematic-hero .motion-toggle{width:28px;height:28px;display:grid;place-items:center;padding:0}.cinematic-hero .motion-label{display:none}.cinematic-hero .hero-track{bottom:70px;width:90%}.cinematic-hero .hero-backdrop{background-position:58% center}.cinematic-hero .hero-shade{background:linear-gradient(180deg,#060908df 0%,#060908ed 36%,#0609087c 62%,#060908b0 100%)}}
+@media(max-width:390px){.cinematic-hero h1{font-size:15.7vw}.hero-actions{gap:15px}}
+@media(prefers-reduced-motion:reduce){.cinematic-hero .hero-backdrop,.cinematic-hero .hero-track,.hero-car img{animation:none!important;transform:none!important}.hero-car{transform:none!important}}
+.motion-paused .cinematic-hero .hero-backdrop,.motion-paused .cinematic-hero .hero-track,.motion-paused .hero-car img{animation:none!important;transform:none!important}
+.motion-paused .hero-car{transform:none!important}

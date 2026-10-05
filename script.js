@@ -113,6 +113,7 @@ function applyMotionPreference() {
   motionToggle.querySelector('.motion-label').textContent = paused ? 'Ativar animações' : 'Pausar animações';
   motionToggle.disabled = reducedMotion.matches;
   if (reducedMotion.matches) motionToggle.querySelector('.motion-label').textContent = 'Movimento reduzido';
+  motionToggle.setAttribute('aria-label', motionToggle.querySelector('.motion-label').textContent);
   document.querySelectorAll('.button').forEach(button => { button.style.removeProperty('--mx'); button.style.removeProperty('--my'); });
 }
 motionToggle.addEventListener('click', () => { userPaused = !userPaused; applyMotionPreference(); });
@@ -191,6 +192,7 @@ function updateScrollEffects() {
   const canMove = !reducedMotion.matches && !userPaused;
   const heroScroll = canMove ? Math.min(window.scrollY, 700) : 0;
   document.documentElement.style.setProperty('--hero-drift', `${Math.round(heroScroll * -.11)}px`);
+  document.documentElement.style.setProperty('--hero-car-drift', `${Math.round(heroScroll * .04)}px`);
   document.documentElement.style.setProperty('--model-drift', `${Math.round(heroScroll * .06)}px`);
   if (experiencePhoto) {
     const bounds = experiencePhoto.getBoundingClientRect();
