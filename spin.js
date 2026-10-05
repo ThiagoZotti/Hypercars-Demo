@@ -8,31 +8,47 @@
   photo.after(viewer);
   const image = viewer.querySelector('img');
   const stage = viewer.querySelector('.spin-stage');
+  const canvas = document.createElement('canvas');
+  canvas.setAttribute('role', 'img');
+  canvas.hidden = true;
+  stage.prepend(canvas);
+  const context = canvas.getContext('2d');
   const range = viewer.querySelector('input');
   const status = viewer.querySelector('.spin-status');
   const retry = viewer.querySelector('.spin-retry');
-  let frames = [], index = 0, generation = 0, currentVehicle, drag;
+  let frames = [], index = 0, generation = 0, currentVehicle, drag, sprite;
   function show(next) {
     if (!frames.length) return;
     index = ((next % frames.length) + frames.length) % frames.length;
-    image.src = frames[index].src;
     const angle = Math.round(index * 360 / frames.length);
-    image.alt = `${currentVehicle.title}, vista exterior a ${angle} graus`;
+    const description = `${currentVehicle.title}, vista ${index + 1} de ${frames.length}, giro ${angle} graus`;
+    if (sprite) {
+      context.clearRect(0, 0, canvas.width, canvas.height);
+      context.drawImage(frames[0], index * sprite.width, 0, sprite.width, sprite.height, 0, 0, canvas.width, canvas.height);
+      canvas.setAttribute('aria-label', description);
+    } else {
+      image.src = frames[index].src;
+      image.alt = description;
+    }
     range.value = index;
-    range.setAttribute('aria-valuetext', `${angle} graus`);
+    range.setAttribute('aria-valuetext', `Vista ${index + 1} de ${frames.length}, ${angle} graus`);
   }
   async function load(key, vehicle) {
     const ticket = ++generation;
     drag = undefined; frames = []; currentVehicle = vehicle;
-    const urls = window.JC_SPINS?.[key];
+    const set = window.JC_SPINS?.[key];
+    sprite = set && !Array.isArray(set) && Number.isInteger(set.frames) && set.frames >= 12 && set.width > 0 && set.height > 0 ? set : null;
+    const urls = sprite ? Array(sprite.frames).fill(sprite.sprite) : set;
     viewer.hidden = !Array.isArray(urls) || urls.length < 12;
     photo.hidden = !vehicle.image;
     if (viewer.hidden) return;
-    image.hidden = true; retry.hidden = true;
+    image.hidden = true; canvas.hidden = true; retry.hidden = true;
+    stage.hidden = false;
     viewer.querySelector('.spin-controls').hidden = true;
     status.textContent = 'Carregando as vistas do veículo…';
     try {
-      const loaded = await Promise.all(urls.map(url => new Promise((resolve, reject) => {
+      const unique = [...new Set(urls)];
+      const loaded = await Promise.all(unique.map(url => new Promise((resolve, reject) => {
         const frame = new Image();
         const timer = setTimeout(() => reject(new Error('timeout')), 15000);
         frame.onload = () => { clearTimeout(timer); resolve(frame); };
@@ -40,13 +56,20 @@
         frame.src = url;
       })));
       if (ticket !== generation || !dialog.open) return;
-      frames = loaded; range.max = frames.length - 1; show(0);
-      image.hidden = false; photo.hidden = true;
+      if (sprite && (loaded[0].naturalWidth !== sprite.width * sprite.frames || loaded[0].naturalHeight !== sprite.height || !context)) throw new Error('Invalid sequence');
+      frames = urls.map(url => loaded[unique.indexOf(url)]);
+      if (sprite) {
+        canvas.width = sprite.width; canvas.height = sprite.height;
+        stage.style.aspectRatio = `${sprite.width} / ${sprite.height}`;
+      } else stage.style.removeProperty('aspect-ratio');
+      range.max = frames.length - 1; show(0);
+      canvas.hidden = !sprite; image.hidden = !!sprite; photo.hidden = true;
       viewer.querySelector('.spin-controls').hidden = false;
-      status.textContent = 'Arraste a foto, use as setas ou escolha um ângulo.';
+      status.textContent = 'Arraste, use as setas ou escolha um ângulo. Visão ilustrativa do modelo.';
     } catch {
       if (ticket !== generation || !dialog.open) return;
       status.textContent = 'Não foi possível carregar a visão 360°. A foto do carro continua disponível.';
+      stage.hidden = true;
       retry.hidden = false;
     }
   }

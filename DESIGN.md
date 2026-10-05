@@ -1,18 +1,17 @@
-# JC Veículos
+# JC Veículos — direção visual
 
-Landing page de loja de carros 0 km e seminovos em Paty do Alferes — RJ. Nome, localização e Instagram fornecidos pelo usuário; telefone e características gerais conferidos na bio pública. Fotografias das publicações da própria loja. Hospedagem e atualizações autorizadas no GitHub Pages.
+Landing page de loja de carros 0 km e seminovos em Paty do Alferes — RJ. Nome, localização e Instagram fornecidos pelo usuário; telefone conferido na bio pública. Hospedagem e atualizações autorizadas no GitHub Pages.
 
-## Direção e tokens
+## Apresentação
 
-Preto e branco. Arquivos fotográficos originais preservados, apresentação monocromática por CSS. Hero com fotografia inclinada e movimento leve. Syne para títulos e Space Grotesk para texto, com fallbacks locais. Sem revelação pela rolagem.
+Preto e branco, títulos Syne e texto Space Grotesk com fallback local. PNGs transparentes sobre superfícies neutras de showroom. Civic flutuante no hero, sem moldura. Tokens em style.css; refinamento em polish.css. Ink #101010, paper #f7f7f5, white #ffffff, muted #777777, rule #dededb. Gradiente metálico nos botões.
 
-Fonte canônica dos tokens: `style.css`; papéis de fonte e acabamento refinados em `polish.css`. Ink #101010, paper #f7f7f5, white #ffffff, muted #777777, rule #dededb. Chrome é um gradiente neutro nos botões. Margens laterais 5%/6%, seções de 96px/60px. Botões principais 60px, setas circulares e controles secundários com borda.
+## Comportamento
 
-## Movimento e comportamento
+Conteúdo visível sem revelação pela rolagem. Movimento leve pausável e preferência por movimento reduzido respeitada. Um botão por carro, abaixo da imagem. Na seção de contato, apenas a chamada principal Conversar no Instagram. Diálogo nativo com Escape e retorno de foco; filtros de sedãs e picapes; mensagem copiada localmente sem envio automático.
 
-Foto flutuante, brilho em hover, resposta ao cursor em ponteiro preciso e onda no clique. Nenhuma animação condiciona acesso a conteúdo. Movimento contínuo pausável; reduced motion desativa animações. Dialog nativo, Escape, foco e retorno de foco. Filtragem local: todos, hatches, picapes. Consulta por Instagram, telefone e localização regional; mensagem e cópia locais sem envio automático.
+## Conteúdo e verificação
 
-## Conteúdo e validação
+Civic, C180, Corolla, Saveiro e Hilux como referências ilustrativas, sem afirmar estoque atual ou preço. Créditos no rodapé. Civic com 24 vistas, Corolla e Hilux com 31: canvas recorta a sequência oficial, com arraste, setas e teclado. C180 e Saveiro exibem fotografia estática.
 
-Palio 2016, Saveiro 2023 e Uno 2012 baseados nos textos das fotografias. Não afirmar estoque atual ou preço. JavaScript validado com `node --check`. Fotografias, filtros, detalhes, Escape, pausa e menu móvel verificados em navegador. Tela de 390px sem elementos excedendo a largura.
-Visão 360°: componente nos detalhes com sequência fotográfica real, arraste e alternativas por teclado. Nenhuma sequência fornecida; controles ocultos até cadastro. Orientações em 360.md.
+JavaScript conferido com node --check. Imagens, filtros e giros conferidos no navegador; arraste e controle por teclado funcionais, viewport de 390px sem excesso de largura. Fontes e edição do C180 documentadas em IMAGENS.md.

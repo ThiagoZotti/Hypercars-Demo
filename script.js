@@ -28,13 +28,44 @@ document.querySelectorAll('.filter').forEach(button => button.addEventListener('
   });
   cards.forEach(card => card.hidden = button.dataset.filter !== 'todos' && card.dataset.category !== button.dataset.filter);
   const count = cards.filter(card => !card.hidden).length;
-  document.querySelector('#filter-status').textContent = `${count} ${count === 1 ? 'veículo publicado' : 'veículos publicados'} pela JC Veículos. Consulte disponibilidade, preços e condições atuais.`;
+  document.querySelector('#filter-status').textContent = `${count} ${count === 1 ? 'modelo' : 'modelos'}. Imagens ilustrativas; consulte a loja sobre estoque e condições atuais.`;
 }));
 const vehicles = {
-  sport: { title: 'Fiat Palio', category: 'SPORTING 1.6 / 2016', description: 'Fiat Palio Sporting 1.6, ano 2016, publicado no Instagram da JC Veículos. Consulte a loja para confirmar disponibilidade, preço e condições atuais.', image: cards[0].querySelector('img').src },
-  touring: { title: 'Volkswagen Saveiro', category: 'TRENDLINE / 2023', description: 'Volkswagen Saveiro Trendline, ano 2023, publicada no Instagram da JC Veículos. Consulte a loja para confirmar disponibilidade, preço e condições atuais.', image: cards[1].querySelector('img').src },
-  performance: { title: 'Fiat Uno', category: 'SPORTING 1.4 / 2012', description: 'Fiat Uno Sporting 1.4, ano 2012, publicado no Instagram da JC Veículos. Consulte a loja para confirmar disponibilidade, preço e condições atuais.', image: cards[2].querySelector('img').src },
-  general: { title: 'O que move você?', category: 'SEU PRÓXIMO CAPÍTULO', description: 'Conte qual carro procura para a JC Veículos.' }
+  "civic": {
+    "title": "Honda Civic",
+    "category": "SEDÃ / REFERÊNCIA DO MODELO",
+    "description": "Imagem ilustrativa de Civic. O giro 360° apresenta uma referência do modelo. Consulte a JC Veículos para confirmar estoque, ano, versão e condições do veículo disponível.",
+    "image": "assets/car-civic.png"
+  },
+  "c180": {
+    "title": "Mercedes-Benz C180",
+    "category": "SEDÃ / REFERÊNCIA DO MODELO",
+    "description": "Imagem ilustrativa de Mercedes-Benz C180 2021. Consulte a JC Veículos para confirmar estoque, ano, versão e condições do veículo disponível.",
+    "image": "assets/car-c180.png"
+  },
+  "corolla": {
+    "title": "Toyota Corolla",
+    "category": "SEDÃ / REFERÊNCIA DO MODELO",
+    "description": "Imagem ilustrativa de Corolla. O giro 360° apresenta uma referência do modelo. Consulte a JC Veículos para confirmar estoque, ano, versão e condições do veículo disponível.",
+    "image": "assets/car-corolla.png"
+  },
+  "saveiro": {
+    "title": "Volkswagen Saveiro",
+    "category": "PICAPE / REFERÊNCIA DO MODELO",
+    "description": "Imagem ilustrativa de Saveiro. Consulte a JC Veículos para confirmar estoque, ano, versão e condições do veículo disponível.",
+    "image": "assets/car-saveiro.png"
+  },
+  "hilux": {
+    "title": "Toyota Hilux",
+    "category": "PICAPE / REFERÊNCIA DO MODELO",
+    "description": "Imagem ilustrativa de Hilux. O giro 360° apresenta uma referência do modelo. Consulte a JC Veículos para confirmar estoque, ano, versão e condições do veículo disponível.",
+    "image": "assets/car-hilux.png"
+  },
+  "general": {
+    "title": "O que move você?",
+    "category": "SEU PRÓXIMO CAPÍTULO",
+    "description": "Conte qual carro procura para a JC Veículos."
+  }
 };
 const dialog = document.querySelector('#car-dialog');
 const message = document.querySelector('#interest');
@@ -47,11 +78,12 @@ function openDetails(key) {
   document.querySelector('#dialog-description').textContent = vehicle.description;
   const image = document.querySelector('#dialog-image');
   image.hidden = !vehicle.image;
-  if (vehicle.image) { image.src = vehicle.image; image.alt = `Foto de ${vehicle.title} publicada pela JC Veículos`; }
+  if (vehicle.image) { image.src = vehicle.image; image.alt = `Imagem ilustrativa de ${vehicle.title}`; }
   message.value = key === 'general' ? 'Olá, JC Veículos! Estou procurando um carro e gostaria de conhecer a coleção. Meu estilo de carro é: ' : `Olá, JC Veículos! Vi o ${vehicle.title} no site e quero conhecer as opções disponíveis. Podemos conversar?`;
   document.querySelector('#copy-status').textContent = '';
   document.body.classList.add('modal-open');
   dialog.showModal();
+  dialog.scrollTop = 0;
   dialog.dataset.vehicle = key;
   document.dispatchEvent(new CustomEvent("jc:vehicle", { detail: { key, vehicle } }));
   document.querySelector('#dialog-close').focus();
