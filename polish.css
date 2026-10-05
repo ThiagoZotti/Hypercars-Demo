@@ -24,3 +24,34 @@ dialog{border-radius:24px;border:1px solid #aaa;box-shadow:0 25px 100px #0007}di
 @media(max-width:700px){.hero{min-height:730px}.hero h1{font-size:8.5vw}.hero-photo{width:106%;height:280px;top:auto;bottom:100px;right:-6%}.hero-model{font-size:22vw;top:0;right:20%;letter-spacing:-5px}.photo-index{bottom:0;right:15%;font-size:6px}.hero-bottom{margin-bottom:0}.hero-foot{bottom:24px}.cars{grid-template-columns:minmax(0,1fr);gap:30px}.car,.car:nth-child(n+4){grid-column:auto}.car-image{aspect-ratio:1.4}.model-watermark{font-size:17vw}.car-info{flex-direction:row;align-items:center}.car h3{font-size:26px}.car-description{font-size:10px}.car-view{font-size:9px}.experience-image{height:360px}.spin-viewer{padding:12px 14px 15px}.spin-controls{gap:10px}.spin-controls label{font-size:10px}.spin-status{font-size:10px}}
 .dialog-header{position:sticky;top:0;z-index:4;background:var(--paper,#f7f7f5)}@media(min-width:701px){.hero-photo .photo-index{bottom:45px}}
 .car-image{cursor:default}.contact-main{display:block}.contact-main h2{max-width:100%}
+
+/* A single, legible signature and a quieter direct contact action. */
+.header .wordmark{gap:12px;white-space:nowrap;letter-spacing:0}
+.wordmark-initials{font-family:var(--display);font-size:30px;font-weight:800;line-height:1;letter-spacing:-2px}
+.wordmark-name{border-left:1px solid #777;padding-left:12px;font-family:var(--body);font-size:12px;font-weight:700;line-height:1.1;letter-spacing:2.3px}
+.header .nav-contact{min-height:44px;padding:0 0 3px;gap:13px;border:0;border-bottom:1px solid #777;border-radius:0;background:none;box-shadow:none;font-size:10px;font-weight:700;letter-spacing:1.1px;text-transform:uppercase;white-space:nowrap}
+.header .nav-contact>span{display:inline;font-size:18px;font-weight:400;line-height:1;width:auto;height:auto;border-radius:0;background:none;color:#fff;transition:transform .25s}
+.header .nav-contact:hover{border-bottom-color:#fff;box-shadow:none}
+.header .nav-contact:hover>span{transform:translate(2px,-2px)}
+
+/* The opening scene fills the viewport below the header. */
+.hero{min-height:calc(100svh - 94px);display:flex;flex-direction:column;justify-content:space-between;padding-top:clamp(38px,7vh,70px)}
+.hero .line{width:27px;flex:none;animation:none}
+.hero-copy{padding-bottom:35px}
+.hero-bottom{margin-bottom:0}
+.hero-photo{top:auto;bottom:70px;height:clamp(300px,53svh,510px)}
+.hero-foot{margin-top:auto}
+@media(max-width:1000px){.hero{min-height:calc(100svh - 94px)}.hero-photo{top:auto;bottom:75px;height:clamp(280px,45svh,420px)}}
+@media(max-width:700px){.header .wordmark{gap:10px}.wordmark-initials{font-size:27px}.wordmark-name{font-size:11px;letter-spacing:1.9px;padding-left:10px}.hero{min-height:max(690px,calc(100svh - 80px));padding-top:clamp(32px,5svh,50px)}.hero h1{font-size:clamp(41px,10vw,60px)}.hero-copy{padding-bottom:0}.hero-photo{top:auto;bottom:72px;height:clamp(250px,37svh,350px);width:108%;right:-8%}.hero-foot{position:relative;left:auto;right:auto;bottom:auto;padding:14px 0}}
+
+/* Scroll movement stays with the cars and the page edge, never the reading flow. */
+.scroll-meter{position:fixed;top:0;left:0;right:0;height:2px;background:#c5c5c5;transform:scaleX(var(--scroll-progress,0));transform-origin:left;z-index:30;pointer-events:none}
+.hero-photo{animation:none;transform:translate3d(0,var(--hero-drift,0px),0)}
+.hero-photo img{animation:cutout-float 7s ease-in-out infinite alternate}
+.hero-model{transform:translate3d(var(--model-drift,0px),0,0)}
+.experience-image{overflow:hidden}
+.experience-image img{transform:scale(1.08) translate3d(0,var(--experience-drift,0px),0)}
+.car-image img[src*="car-c180-coupe"]{width:100%;height:100%;margin:0;object-fit:contain}
+.motion-paused .scroll-meter{display:none}
+@media(prefers-reduced-motion:reduce){.scroll-meter{display:none}}
+@media(max-width:700px){.hero h1{font-size:clamp(24px,7.6vw,53px);letter-spacing:-.035em}}

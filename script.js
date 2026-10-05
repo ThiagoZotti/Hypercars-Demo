@@ -38,10 +38,10 @@ const vehicles = {
     "image": "assets/car-civic.png"
   },
   "c180": {
-    "title": "Mercedes-Benz C180",
-    "category": "SEDÃ / REFERÊNCIA DO MODELO",
-    "description": "Imagem ilustrativa de Mercedes-Benz C180 2021. Consulte a JC Veículos para confirmar estoque, ano, versão e condições do veículo disponível.",
-    "image": "assets/car-c180.png"
+    "title": "Mercedes-Benz C180 Coupé",
+    "category": "CUPÊ / REFERÊNCIA DO MODELO",
+    "description": "Imagem ilustrativa da Mercedes-Benz C180 Avantgarde Coupé 2017 do catálogo Webmotors. Consulte a JC Veículos para confirmar estoque, ano, versão e condições do veículo disponível.",
+    "image": "assets/car-c180-coupe.png"
   },
   "corolla": {
     "title": "Toyota Corolla",
@@ -138,5 +138,34 @@ document.querySelectorAll('.button').forEach(button => {
     window.setTimeout(() => ripple.remove(), 900);
   });
 });
+
+// Scroll motion changes the scenery, while text and controls stay visible.
+let scrollScheduled = false;
+const experiencePhoto = document.querySelector('.experience-image');
+function updateScrollEffects() {
+  scrollScheduled = false;
+  const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+  document.documentElement.style.setProperty('--scroll-progress', String(Math.min(1, window.scrollY / maxScroll)));
+  const canMove = !reducedMotion.matches && !userPaused;
+  const heroScroll = canMove ? Math.min(window.scrollY, 700) : 0;
+  document.documentElement.style.setProperty('--hero-drift', `${Math.round(heroScroll * -.11)}px`);
+  document.documentElement.style.setProperty('--model-drift', `${Math.round(heroScroll * .06)}px`);
+  if (experiencePhoto) {
+    const bounds = experiencePhoto.getBoundingClientRect();
+    const centered = (window.innerHeight / 2 - (bounds.top + bounds.height / 2)) / window.innerHeight;
+    const drift = canMove ? Math.max(-20, Math.min(20, centered * 28)) : 0;
+    document.documentElement.style.setProperty('--experience-drift', `${drift.toFixed(1)}px`);
+  }
+}
+function scheduleScrollEffects() {
+  if (scrollScheduled) return;
+  scrollScheduled = true;
+  requestAnimationFrame(updateScrollEffects);
+}
+window.addEventListener('scroll', scheduleScrollEffects, { passive: true });
+window.addEventListener('resize', scheduleScrollEffects);
+motionToggle.addEventListener('click', scheduleScrollEffects);
+reducedMotion.addEventListener('change', scheduleScrollEffects);
+scheduleScrollEffects();
 
 
