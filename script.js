@@ -141,8 +141,9 @@ document.querySelectorAll('.button').forEach(button => {
   });
 });
 
-// Scroll motion changes the scenery, while text and controls stay visible.
+// The hero exits as one scene while the next section enters.
 let scrollScheduled = false;
+const hero = document.querySelector('.cinematic-hero');
 const experiencePhoto = document.querySelector('.experience-image');
 const showroom = document.querySelector('.showroom');
 const showroomViewport = document.querySelector('.showroom-viewport');
@@ -191,8 +192,17 @@ function updateScrollEffects() {
   document.documentElement.style.setProperty('--scroll-progress', String(Math.min(1, window.scrollY / maxScroll)));
   const canMove = !reducedMotion.matches && !userPaused;
   const heroScroll = canMove ? Math.min(window.scrollY, 700) : 0;
+  const heroExit = canMove ? Math.max(0, Math.min(1, (window.scrollY - 30) / Math.max(320, hero.offsetHeight * .78))) : 0;
   document.documentElement.style.setProperty('--hero-drift', `${Math.round(heroScroll * -.11)}px`);
   document.documentElement.style.setProperty('--hero-car-drift', `${Math.round(heroScroll * .04)}px`);
+  document.documentElement.style.setProperty('--hero-scene-scale', (1.1 + heroExit * .2).toFixed(3));
+  document.documentElement.style.setProperty('--hero-copy-x', `${Math.round(heroExit * -110)}px`);
+  document.documentElement.style.setProperty('--hero-copy-y', `${Math.round(heroExit * -45)}px`);
+  document.documentElement.style.setProperty('--hero-copy-scale', (1 - heroExit * .08).toFixed(3));
+  document.documentElement.style.setProperty('--hero-copy-opacity', Math.max(0, 1 - heroExit * 1.35).toFixed(3));
+  document.documentElement.style.setProperty('--hero-car-x', `${Math.round(heroExit * 165)}px`);
+  document.documentElement.style.setProperty('--hero-car-scale', (1 + heroExit * .25).toFixed(3));
+  document.documentElement.style.setProperty('--hero-car-opacity', Math.max(0, 1 - heroExit * 1.15).toFixed(3));
   document.documentElement.style.setProperty('--model-drift', `${Math.round(heroScroll * .06)}px`);
   if (experiencePhoto) {
     const bounds = experiencePhoto.getBoundingClientRect();
@@ -219,5 +229,27 @@ window.addEventListener('resize', scheduleScrollEffects);
 motionToggle.addEventListener('click', scheduleScrollEffects);
 reducedMotion.addEventListener('change', scheduleScrollEffects);
 scheduleScrollEffects();
+
+if ('IntersectionObserver' in window) {
+  const stages = document.querySelectorAll('.section-heading, .essence, .experience-copy, .contact-main');
+  const stageObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('is-visible');
+      stageObserver.unobserve(entry.target);
+    });
+  }, { threshold: .15, rootMargin: '0px 0px -8% 0px' });
+  stages.forEach(stage => stageObserver.observe(stage));
+  document.body.classList.add('motion-ready');
+}
+
+hero.addEventListener('pointermove', event => {
+  if (!precisePointer.matches || reducedMotion.matches || userPaused) return;
+  const bounds = hero.getBoundingClientRect();
+  hero.style.setProperty('--pointer-x', `${((event.clientX - bounds.left) / bounds.width * 100).toFixed(1)}%`);
+  hero.style.setProperty('--pointer-y', `${((event.clientY - bounds.top) / bounds.height * 100).toFixed(1)}%`);
+  hero.style.setProperty('--pointer-opacity', '1');
+}, { passive: true });
+hero.addEventListener('pointerleave', () => hero.style.setProperty('--pointer-opacity', '.7'));
 
 

@@ -14,4 +14,4 @@ Derivado final atual: assets/car-c180-coupe.png. O recorte anterior permanece em
 
 ## Cenário do hero
 
-`assets/hero-showroom-concept.jpg` é uma versão otimizada da ambientação gerada por IA para o mockup aprovado em 2026-10-05. É uma imagem arquitetônica conceitual e não uma fotografia da loja, da cidade ou de uma localização real específica. O hero identifica cenário e carro como ilustrativos. A logo `assets/jc-logo.jpg` é a imagem original da JC Veículos já presente no projeto.
+`assets/hero-showroom-sunset.jpg` é a versão otimizada da imagem escolhida pelo usuário em 2026-10-05 para o hero. O showroom ao pôr do sol e a paisagem ao fundo foram gerados por IA; não representam a loja nem Paty do Alferes. O hero identifica cenário e carro como ilustrativos. A logo `assets/jc-logo.jpg` é a imagem original da JC Veículos já presente no projeto.
