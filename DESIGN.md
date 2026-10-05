@@ -1,21 +1,20 @@
 # JC Veículos — direção visual
 
-Landing page de loja de carros 0 km e seminovos em Paty do Alferes — RJ. Nome, localização e Instagram fornecidos pelo usuário; telefone conferido na bio pública. Hospedagem e atualizações autorizadas no GitHub Pages.
+Landing page da JC Veículos, loja de carros 0 km e seminovos em Paty do Alferes, RJ. A página apresenta referências de modelos e conduz a uma conversa com a loja; não afirma estoque ou preço.
 
-## Apresentação
+## Conceito: Linha de Corte
 
-Preto e branco com um acento verde derivado da logo original. Hero em Barlow Condensed e DM Sans; demais seções em Syne e Space Grotesk com fallback local. A C180 Coupé domina o hero como fotografia conceitual de estúdio, sem moldura; os PNGs transparentes permanecem na coleção. Tokens em style.css; refinamento em polish.css e hero.css. Ink #101010, paper #f7f7f5, white #ffffff, muted #777777, rule #dededb. Gradiente metálico nos botões das seções seguintes.
+A linguagem combina fotografia automotiva em tela cheia, tipografia condensada e cortes diagonais discretos nas superfícies interativas. O corte remete às linhas da carroceria e aparece no fim do hero, nos cartões e nos botões. O carro e a logo original permanecem os elementos dominantes; o verde da marca aparece apenas em sinais de foco, andamento e resposta.
 
-## Comportamento
+## Sistema visual
 
-O hero Estúdio abre com foto em foco progressivo, luz cruzando a cena e título revelado em duas linhas; ao rolar, o texto sai e a fotografia ganha profundidade. Os títulos das seções seguintes entram conforme a rolagem. No desktop, a coleção fica fixa enquanto a rolagem conduz os cinco carros na horizontal. Setas, teclado e deslize oferecem caminhos alternativos. No celular, a vitrine vira um carrossel. Animações pausáveis e preferência por movimento reduzido respeitada. Um botão por carro, abaixo da imagem. Na seção de contato, apenas a chamada principal Conversar no Instagram. Diálogo nativo com Escape e retorno de foco; filtros de sedãs, cupês e picapes; mensagem copiada localmente sem envio automático.
+- Grafite `#080808` para o palco, `#0b0b0b` para a coleção e branco quente `#f7f7f5` para contraste.
+- Verde da marca `#18c54a`, usado com parcimônia.
+- Barlow Condensed para a chamada principal; Syne para as grandes chamadas de seção; DM Sans e Space Grotesk para leitura e controles.
+- Botões de cantos chanfrados, com varredura diagonal no hover, foco visível dentro do formato e rótulos que descrevem a ação.
 
-## Conteúdo e verificação
+## Movimento e conteúdo
 
-Civic, C180 Coupé, Corolla, Saveiro e Hilux como referências ilustrativas, sem afirmar estoque atual ou preço. Créditos no rodapé. Civic com 24 vistas, Corolla e Hilux com 31: canvas recorta a sequência oficial, com arraste, setas e teclado. C180 Coupé e Saveiro exibem imagem estática.
+A abertura revela a fotografia e o título em etapas. A rolagem conduz à coleção horizontal no desktop; no celular, a coleção funciona por deslize e setas. Todos os movimentos respeitam a preferência por movimento reduzido e o controle de pausa. Os cartões têm apenas uma ação principal por modelo; o contato tem apenas um botão para abrir o Instagram.
 
-JavaScript conferido com node --check. Imagens, filtros e giros conferidos no navegador; arraste e controle por teclado funcionais, viewport de 390px sem excesso de largura. Fontes e edição do C180 documentadas em IMAGENS.md.
-
-O hero ocupa a primeira tela e traz uma ação principal para a coleção; o contato com a JC fica no rodapé do hero. A vitrine horizontal escura traduz a dinâmica de rolagem do vídeo de referência. C180 da coleção usa a imagem de catálogo C180 Coupé 2017 indicada pelo usuário, classificada como cupê e com origem creditada.
-
-Hero Estúdio escolhido em 2026-10-05: logo original `assets/jc-logo.jpg` no cabeçalho; título “O carro muda tudo” em Barlow Condensed; fotografia conceitual da C180 gerada por IA a partir da referência já usada no projeto. Arquivo otimizado em `assets/hero-c180-studio.jpg`, identificado no hero como imagem conceitual e veículo ilustrativo. A entrada e a transição de rolagem são pausáveis, com movimento reduzido respeitado. O CTA abre a coleção e o link do rodapé abre o Instagram.
+As imagens dos veículos são ilustrativas. Civic, Corolla e Hilux usam sequências PNG reais para o giro 360°. C180 Coupé e Saveiro apresentam fotografias estáticas. A loja deve confirmar disponibilidade, versão, ano e condições antes de qualquer negociação.
