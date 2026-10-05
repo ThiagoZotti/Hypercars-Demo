@@ -16,6 +16,6 @@ Site estático em HTML, CSS e JavaScript, publicado em https://thiagozotti.githu
 - Diálogo acessível, mensagem copiável, menu móvel, animações pausáveis e movimento reduzido.
 - Instagram @jc.veiculos1, telefone (24) 98112-6250 e busca regional no mapa.
 
-Imagens ilustrativas, sem afirmar estoque, versões, anos ou preços atuais. Fontes e créditos em `IMAGENS.md` e `imagens.html`; configuração do giro em `360.md`. A imagem da C180 Coupé foi indicada pelo usuário a partir do catálogo Webmotors e teve o fundo removido com IA.
+Imagens ilustrativas, sem afirmar estoque, versões, anos ou preços atuais. Fontes e créditos em `IMAGENS.md` e `imagens.html`; configuração do giro em `360.md`. A imagem da C180 Coupé foi indicada pelo usuário a partir do catálogo Webmotors e teve o fundo removido para uso no site.
 
 `index.html`: conteúdo. `style.css` e `polish.css`: apresentação. `script.js`: interações. `spin.js` e `spin-data.js`: visualizador e sequências. Nenhum dado é enviado automaticamente.
