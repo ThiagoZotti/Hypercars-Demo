@@ -28,7 +28,6 @@ document.querySelectorAll('.filter').forEach(button => button.addEventListener('
   });
   cards.forEach(card => card.hidden = button.dataset.filter !== 'todos' && card.dataset.category !== button.dataset.filter);
   const count = cards.filter(card => !card.hidden).length;
-  document.querySelector('#filter-status').textContent = `${count} ${count === 1 ? 'modelo' : 'modelos'}. Imagens ilustrativas; consulte a loja sobre estoque e condições atuais.`;
   syncShowroomFilter(count);
 }));
 const vehicles = {
@@ -205,13 +204,6 @@ function updateScrollEffects() {
     const drift = canMove ? Math.max(-20, Math.min(20, centered * 28)) : 0;
     document.documentElement.style.setProperty('--experience-drift', `${drift.toFixed(1)}px`);
   }
-  const pinEnabled = canMove && window.matchMedia('(min-width:761px) and (min-height:681px)').matches && !showroom.classList.contains('showroom--compact');
-  if (pinEnabled) {
-    const distance = showroom.offsetHeight - window.innerHeight;
-    const position = distance > 0 ? Math.max(0, Math.min(1, -showroom.getBoundingClientRect().top / distance)) : 0;
-    const maxHorizontal = Math.max(0, showroomViewport.scrollWidth - showroomViewport.clientWidth);
-    showroomViewport.scrollLeft = position * maxHorizontal;
-  }
   positionShowroomCards();
 }
 function scheduleScrollEffects() {
@@ -237,6 +229,4 @@ if ('IntersectionObserver' in window) {
   stages.forEach(stage => stageObserver.observe(stage));
   document.body.classList.add('motion-ready');
 }
-
-
 

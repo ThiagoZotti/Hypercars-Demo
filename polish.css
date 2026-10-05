@@ -66,8 +66,8 @@ dialog{border-radius:24px;border:1px solid #aaa;box-shadow:0 25px 100px #0007}di
 .hero-bottom{animation:jc-headline-arrive .75s .38s both}
 .hero-photo img{animation:jc-car-arrive 1.35s .14s cubic-bezier(.16,1,.3,1) both}
 
-.collection.showroom{height:calc(100svh + 880px);min-height:1450px;padding:0 5%;background:#111214;color:#f4f4f1;position:relative;overflow:clip}
-.showroom-pin{position:sticky;top:0;height:100svh;min-height:670px;display:flex;flex-direction:column;justify-content:center;padding:30px 0 22px}
+.collection.showroom{height:auto;min-height:0;padding:86px 5% 92px;background:#111214;color:#f4f4f1;position:relative;overflow:hidden}
+.showroom-pin{position:relative;top:auto;height:auto;min-height:0;display:flex;flex-direction:column;justify-content:flex-start;padding:0}
 .showroom .section-heading{margin-bottom:25px}
 .showroom .section h2,.showroom h2{font-size:clamp(36px,4.2vw,62px);color:#f6f6f4}
 .showroom .muted{color:#858586}
