@@ -15,3 +15,4 @@ Foto flutuante, brilho em hover, resposta ao cursor em ponteiro preciso e onda n
 ## Conteúdo e validação
 
 Palio 2016, Saveiro 2023 e Uno 2012 baseados nos textos das fotografias. Não afirmar estoque atual ou preço. JavaScript validado com `node --check`. Fotografias, filtros, detalhes, Escape, pausa e menu móvel verificados em navegador. Tela de 390px sem elementos excedendo a largura.
+Visão 360°: componente nos detalhes com sequência fotográfica real, arraste e alternativas por teclado. Nenhuma sequência fornecida; controles ocultos até cadastro. Orientações em 360.md.

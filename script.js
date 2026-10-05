@@ -52,6 +52,8 @@ function openDetails(key) {
   document.querySelector('#copy-status').textContent = '';
   document.body.classList.add('modal-open');
   dialog.showModal();
+  dialog.dataset.vehicle = key;
+  document.dispatchEvent(new CustomEvent("jc:vehicle", { detail: { key, vehicle } }));
   document.querySelector('#dialog-close').focus();
 }
 document.querySelectorAll('[data-car]').forEach(button => button.addEventListener('click', () => openDetails(button.dataset.car)));
