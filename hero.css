@@ -15,7 +15,7 @@
 .cinematic-hero .hero-copy{position:relative;z-index:2;width:min(760px,65%);margin:auto 0 4vh;padding:0;pointer-events:auto;animation:none}
 .cinematic-hero .hero-kicker{display:flex;align-items:center;gap:13px;color:#a9c8ad;font-size:10px;font-weight:700;letter-spacing:.21em;margin:0 0 22px;white-space:nowrap}
 .cinematic-hero .hero-kicker span{width:33px;height:2px;flex:none;background:var(--jc-green);box-shadow:0 0 14px var(--jc-green)}
-.cinematic-hero h1{margin:0;max-width:none;font:800 clamp(78px,8vw,150px)/.92 'Barlow Condensed',Impact,sans-serif;letter-spacing:-.037em;text-transform:uppercase}
+.cinematic-hero h1{margin:0;max-width:none;font:700 clamp(78px,8vw,150px)/.92 'Barlow Condensed',Impact,sans-serif;letter-spacing:-.025em;text-transform:uppercase}
 .cinematic-hero h1>span,.cinematic-hero h1 em{display:block;white-space:nowrap}
 .cinematic-hero h1 em{font-style:normal;color:transparent;-webkit-text-stroke:1.5px #eceee9;letter-spacing:-.04em}
 .cinematic-hero h1 .period{display:inline;color:var(--jc-green);-webkit-text-stroke:0}
@@ -47,3 +47,4 @@
 @media(prefers-reduced-motion:reduce){.cinematic-hero .hero-backdrop,.cinematic-hero .hero-track,.hero-car img{animation:none!important;transform:none!important}.hero-car{transform:none!important}}
 .motion-paused .cinematic-hero .hero-backdrop,.motion-paused .cinematic-hero .hero-track,.motion-paused .hero-car img{animation:none!important;transform:none!important}
 .motion-paused .hero-car{transform:none!important}
+
