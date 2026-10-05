@@ -29,6 +29,7 @@ document.querySelectorAll('.filter').forEach(button => button.addEventListener('
   cards.forEach(card => card.hidden = button.dataset.filter !== 'todos' && card.dataset.category !== button.dataset.filter);
   const count = cards.filter(card => !card.hidden).length;
   document.querySelector('#filter-status').textContent = `${count} ${count === 1 ? 'modelo' : 'modelos'}. Imagens ilustrativas; consulte a loja sobre estoque e condições atuais.`;
+  syncShowroomFilter(count);
 }));
 const vehicles = {
   "civic": {
@@ -142,6 +143,47 @@ document.querySelectorAll('.button').forEach(button => {
 // Scroll motion changes the scenery, while text and controls stay visible.
 let scrollScheduled = false;
 const experiencePhoto = document.querySelector('.experience-image');
+const showroom = document.querySelector('.showroom');
+const showroomViewport = document.querySelector('.showroom-viewport');
+const showroomPrev = document.querySelector('#showroom-prev');
+const showroomNext = document.querySelector('#showroom-next');
+function positionShowroomCards() {
+  const viewportCenter = showroomViewport.getBoundingClientRect().left + showroomViewport.clientWidth / 2;
+  const still = reducedMotion.matches || userPaused;
+  cards.forEach(card => {
+    if (card.hidden || still) {
+      card.style.setProperty('--card-tilt', '0deg');
+      card.style.setProperty('--card-lift', '0px');
+      return;
+    }
+    const bounds = card.getBoundingClientRect();
+    const offset = (bounds.left + bounds.width / 2 - viewportCenter) / showroomViewport.clientWidth;
+    card.style.setProperty('--card-tilt', `${Math.max(-8, Math.min(8, -offset * 8)).toFixed(1)}deg`);
+    card.style.setProperty('--card-lift', `${Math.min(15, Math.abs(offset) * 15).toFixed(1)}px`);
+  });
+  const lastPosition = showroomViewport.scrollWidth - showroomViewport.clientWidth;
+  showroomPrev.disabled = showroomViewport.scrollLeft < 4;
+  showroomNext.disabled = showroomViewport.scrollLeft >= lastPosition - 4 || lastPosition < 4;
+}
+function syncShowroomFilter(count) {
+  showroom.classList.toggle('showroom--compact', count < 4);
+  showroomViewport.scrollLeft = 0;
+  requestAnimationFrame(() => { positionShowroomCards(); scheduleScrollEffects(); });
+}
+function moveShowroom(direction) {
+  const card = cards.find(item => !item.hidden);
+  if (!card) return;
+  const gap = parseFloat(getComputedStyle(document.querySelector('.cars')).gap) || 0;
+  showroomViewport.scrollBy({ left: direction * (card.offsetWidth + gap), behavior: reducedMotion.matches || userPaused ? 'instant' : 'smooth' });
+}
+showroomPrev.addEventListener('click', () => moveShowroom(-1));
+showroomNext.addEventListener('click', () => moveShowroom(1));
+showroomViewport.addEventListener('scroll', () => requestAnimationFrame(positionShowroomCards), { passive: true });
+showroomViewport.addEventListener('keydown', event => {
+  if (event.target !== showroomViewport || !['ArrowLeft', 'ArrowRight'].includes(event.key)) return;
+  event.preventDefault();
+  moveShowroom(event.key === 'ArrowRight' ? 1 : -1);
+});
 function updateScrollEffects() {
   scrollScheduled = false;
   const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
@@ -156,6 +198,14 @@ function updateScrollEffects() {
     const drift = canMove ? Math.max(-20, Math.min(20, centered * 28)) : 0;
     document.documentElement.style.setProperty('--experience-drift', `${drift.toFixed(1)}px`);
   }
+  const pinEnabled = canMove && window.matchMedia('(min-width:761px) and (min-height:681px)').matches && !showroom.classList.contains('showroom--compact');
+  if (pinEnabled) {
+    const distance = showroom.offsetHeight - window.innerHeight;
+    const position = distance > 0 ? Math.max(0, Math.min(1, -showroom.getBoundingClientRect().top / distance)) : 0;
+    const maxHorizontal = Math.max(0, showroomViewport.scrollWidth - showroomViewport.clientWidth);
+    showroomViewport.scrollLeft = position * maxHorizontal;
+  }
+  positionShowroomCards();
 }
 function scheduleScrollEffects() {
   if (scrollScheduled) return;

@@ -7,6 +7,8 @@ Site estático em HTML, CSS e JavaScript, publicado em https://thiagozotti.githu
 ## Funcionalidades
 
 - Cinco modelos ilustrativos: Civic, C180 Coupé, Corolla, Saveiro e Hilux; filtro por sedãs, cupês e picapes.
+- Vitrine escura com percurso horizontal vinculado à rolagem no desktop; setas, teclado e gesto de deslizar no celular.
+- Entrada animada no hero e movimentos de profundidade nos cartões, com opção de pausar e suporte a movimento reduzido.
 - Giro real por sequência de imagens: Civic (24 vistas), Corolla e Hilux (31 vistas), carregado ao abrir os detalhes. Arraste, setas e controle por teclado.
 - C180 e Saveiro com fotografia estática.
 - Um único botão por veículo e uma chamada principal na seção de contato.
