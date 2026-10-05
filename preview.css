@@ -1,0 +1,133 @@
+/* Prévia local — prioridade 2: marca, leitura, foco da vitrine e detalhes. */
+:root{--jc-silver:#f1f0ed;--jc-stage:#111214;--jc-hairline:#696b6d;--jc-ease:cubic-bezier(.16,1,.3,1)}
+
+/* A marca recortada agora ocupa seu espaço natural; nenhum recorte ou blend. */
+.header .brand-image{width:192px;height:88px;overflow:visible;display:flex;align-items:center;flex:none}
+.header .brand-image img{width:192px;height:96px;max-width:100%;object-fit:contain;transform:none;mix-blend-mode:normal;filter:drop-shadow(0 3px 10px #0008)}
+.footer-brand{width:166px;min-height:72px;display:flex;align-items:center}
+.footer-brand img{width:166px;height:83px;object-fit:contain}
+
+/* O último instante do hero se funde com a vitrine. */
+.cinematic-hero::after{content:"";position:absolute;inset:48% 0 0;z-index:1;pointer-events:none;background:linear-gradient(180deg,transparent 0%,#111214b5 70%,#111214 100%);opacity:var(--handoff-progress,0);transition:opacity .08s linear}
+.cinematic-hero .hero-copy,.cinematic-hero .hero-foot{z-index:3}
+.brand-strip{position:relative;overflow:hidden;border-top:1px solid #ffffff24}
+.brand-strip::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--jc-silver);transform:scaleX(var(--handoff-progress,0));transform-origin:left;will-change:transform}
+.preview-motion .brand-strip>*{opacity:0;transform:translate3d(0,22px,0)}
+.preview-motion .brand-strip.is-visible>*{animation:jc-strip-arrive .75s var(--jc-ease) both}
+.brand-strip.is-visible>*:nth-child(2){animation-delay:.08s}
+.brand-strip.is-visible>*:nth-child(3){animation-delay:.16s}
+.brand-strip.is-visible>*:nth-child(4){animation-delay:.24s}
+.brand-strip.is-visible>*:nth-child(5){animation-delay:.32s}
+@keyframes jc-strip-arrive{to{opacity:1;transform:none}}
+
+/* Os carros recebem o foco enquanto a vitrine se move. */
+.showroom .section-intro{font-size:14px;line-height:1.6;color:#cecece}
+.showroom .filter{font-size:13px;min-height:46px;padding:11px 18px}
+.showroom .demo-label{font-size:10px;color:#d0d0d0}
+.showroom-focus{display:inline-flex;align-items:center;gap:8px;margin-right:16px;padding:8px 0;color:#f0f0ec;font:700 10px/1 'DM Sans',Arial,sans-serif;letter-spacing:.13em;white-space:nowrap}
+.focus-dot{width:6px;height:6px;border-radius:50%;background:#f0f0ec;box-shadow:0 0 0 4px #f0f0ec1f}
+.showroom-arrow{width:46px;height:46px;font-size:22px}
+.showroom .car,.showroom .car:nth-child(n+4){opacity:var(--focus-opacity,1);transform:perspective(1000px) rotateY(var(--card-tilt,0deg)) translateY(calc(var(--card-lift,0px) + var(--focus-lift,0px))) scale(var(--focus-scale,1));transition:opacity .28s ease,transform .45s var(--jc-ease)}
+.showroom .car:hover{transform:perspective(1000px) rotateY(var(--card-tilt,0deg)) translateY(calc(var(--card-lift,0px) - 7px)) scale(1.01);opacity:1}
+.showroom .car-image{border:1px solid #646669;box-shadow:0 16px 42px #0002;transition:border-color .35s,box-shadow .35s}
+.showroom .car.is-focused .car-image{border-color:#f5f5f2;box-shadow:0 20px 64px #0007,0 0 0 1px #ffffff24}
+.showroom .car-image img{transition:transform .65s var(--jc-ease),filter .55s}
+.showroom .car.is-focused .car-image img{transform:translateY(-5px) scale(1.045);filter:grayscale(1) contrast(1.04)}
+.showroom .car h3{font-size:28px;line-height:1.08}
+.showroom .car-make{font-size:11px;letter-spacing:.1em;color:#dedede}
+.showroom .car-description{font-size:12px;color:#d0d0d0;line-height:1.5}
+.showroom .car-tag{font-size:10px;letter-spacing:.08em}
+.showroom .text-action{position:relative;isolation:isolate;min-height:48px;padding:7px 7px 7px 17px;gap:15px;border:1px solid #a1a2a4;border-radius:7px;background:#ffffff08;color:#fff;font:700 13px/1 'DM Sans',Arial,sans-serif;overflow:hidden;transition:color .28s,border-color .28s,transform .28s}
+.showroom .text-action::before{content:"";position:absolute;inset:0;background:#f2f2ef;z-index:-1;transform:translateX(-102%);transition:transform .4s var(--jc-ease)}
+.showroom .text-action:hover{color:#111;border-color:#f2f2ef;transform:translateY(-2px)}
+.showroom .text-action:hover::before{transform:translateX(0)}
+.showroom .text-action .mini-arrow{width:32px;height:32px;background:#f2f2ef;color:#111;font-size:19px;border-radius:4px;transition:transform .35s var(--jc-ease),background .28s,color .28s}
+.showroom .text-action:hover .mini-arrow{background:#111;color:#fff;transform:translate(1px,-1px) rotate(45deg)}
+.showroom .collection-note{font-size:12px;line-height:1.6;color:#c0c0c0}
+
+/* Modal de duas áreas: veículo à esquerda, contexto e contato à direita. */
+#car-dialog[open]{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(360px,.85fr);grid-template-rows:68px minmax(0,1fr);width:min(1120px,calc(100vw - 32px));max-width:1120px;height:min(730px,calc(100dvh - 40px));max-height:calc(100dvh - 40px);overflow:hidden;border:1px solid #f4f4f23d;border-radius:17px;background:#f4f4f1;box-shadow:0 30px 110px #000b;animation:jc-dialog-open .56s var(--jc-ease) both}
+#car-dialog::backdrop{background:#050505df;backdrop-filter:blur(9px)}
+.dialog-header{grid-column:1/-1;grid-row:1;z-index:5;position:relative;top:auto;background:#161719;color:#f3f3f0;border-bottom:1px solid #56585a;padding:10px 22px}
+.dialog-header .eyebrow{font-size:10px;letter-spacing:.15em;color:#d6d6d4}
+.dialog-header .close-button{color:#fff;background:#ffffff14;border:1px solid #ffffff45;font-size:23px;line-height:1;flex:none}
+.dialog-header .close-button:hover{background:#fff;color:#111;transform:rotate(90deg)}
+#dialog-image,.spin-viewer{grid-column:1;grid-row:2;min-width:0;min-height:0;height:100%;width:100%;margin:0}
+#dialog-image{object-fit:contain;padding:30px;background:radial-gradient(ellipse at 50% 70%,#e2e2df,#bcbebd 88%);filter:grayscale(1)}
+.spin-viewer{display:flex;flex-direction:column;justify-content:center;overflow:auto;padding:20px 22px 12px;background:radial-gradient(ellipse at 50% 55%,#f1f1ef,#c7c9c7 88%);color:#111}
+.spin-stage{width:100%;max-height:calc(100% - 125px);margin:auto 0 0;aspect-ratio:3/2;flex:0 1 auto}
+.spin-stage canvas,.spin-stage img{width:100%;height:100%;object-fit:contain}
+.spin-controls{margin-top:auto;min-height:62px;padding:0 7px}
+.spin-controls label{font-size:12px;font-weight:600}
+.spin-status{font-size:12px;min-height:42px;margin:3px 6px 0;color:#343434}
+.spin-badge{font-size:12px;font-weight:700;letter-spacing:.08em}
+.spin-viewer:not([hidden]) .spin-stage{animation:jc-stage-enter .85s .12s var(--jc-ease) both}
+.dialog-body{grid-column:2;grid-row:2;min-width:0;min-height:0;display:flex;flex-direction:column;overflow-y:auto;padding:23px 27px 15px;background:#f5f5f2;border-left:1px solid #c7c8c5}
+.dialog-heading{display:flex;align-items:center;justify-content:space-between;gap:18px}
+.dialog-body .eyebrow{margin:0;color:#5d5e5e;font-size:10px;letter-spacing:.12em}
+.dialog-index{font:700 11px/1 'DM Sans',Arial,sans-serif;letter-spacing:.13em;color:#777;white-space:nowrap}
+.dialog-body h2{font-family:'Syne',Arial,sans-serif;font-size:clamp(32px,3vw,41px);line-height:1.02;letter-spacing:-.045em;margin:12px 0 11px}
+.dialog-body>#dialog-description{font-size:13px;line-height:1.52;color:#454646;margin:0 0 14px}
+.dialog-facts{display:flex;flex-wrap:wrap;gap:8px;border-top:1px solid #c5c6c3;border-bottom:1px solid #c5c6c3;padding:9px 0}
+.dialog-facts span{font:700 11px/1.25 'DM Sans',Arial,sans-serif;letter-spacing:.02em;border:1px solid #aeb0ad;padding:9px 10px;background:#ebebe8}
+.dialog-contact{margin-top:auto;padding-top:15px}
+.dialog-contact-heading{font:700 18px/1.2 'Syne',Arial,sans-serif;margin:0 0 10px}
+.dialog-contact label{font-size:12px;margin:0 0 8px}
+.dialog-contact textarea{border-radius:7px;min-height:80px;max-height:140px;padding:10px 12px;font-size:13px;line-height:1.42;resize:vertical}
+.dialog-contact .contact-note{font-size:11px;line-height:1.45;margin:7px 0 10px;color:#555}
+.dialog-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px;align-items:stretch}
+.dialog-actions .copy-action,.dialog-actions .button{width:100%;min-height:50px;display:flex;align-items:center;justify-content:space-between;gap:7px;padding:7px 8px 7px 13px;border-radius:6px;font-size:11px;font-weight:700;line-height:1.2;text-align:left}
+.dialog-actions .copy-action{background:transparent;border:1px solid #8f918e;color:#111;transition:background .25s,border-color .25s}
+.dialog-actions .copy-action:hover{background:#e3e4e0;border-color:#111}
+.dialog-actions .copy-action span{font-size:18px}
+.dialog-actions .button{background:#151617;color:#fff;border:1px solid #151617;transition:background .25s,transform .25s}
+.dialog-actions .button:hover{background:#343638;transform:translateY(-2px)}
+.dialog-actions .button-arrow{width:32px;height:32px;flex:none}
+.copy-status{min-height:20px;font-size:11px}
+@keyframes jc-dialog-open{from{opacity:0;transform:translateY(30px) scale(.96);clip-path:inset(0 0 8% 0 round 17px)}to{opacity:1;transform:none;clip-path:inset(0 round 17px)}}
+@keyframes jc-stage-enter{from{opacity:0;transform:translateX(-30px) scale(.94)}to{opacity:1;transform:none}}
+
+/* Legibilidade de legenda e ações em toda a página. */
+.hero-kicker,.cinematic-hero .hero-caption,.cinematic-hero .hero-address,.cinematic-hero .hero-contact{font-size:10px}
+.cinematic-hero .hero-message p{font-size:14px;max-width:235px}
+.cinematic-hero .hero-primary{font-size:13px;min-height:60px}
+.experience-item h3{font-size:16px}
+.experience-item p,.essence-bottom p{font-size:14px}
+.footer-bottom,.image-credits{font-size:11px}
+
+@media(max-width:1000px){.showroom-focus{display:none}.showroom .section-intro{font-size:13px}#car-dialog[open]{grid-template-columns:minmax(0,1fr) minmax(325px,.9fr)}}
+@media(max-width:760px){
+  .header .brand-image{width:151px;height:69px}.header .brand-image img{width:151px;height:76px}
+  .footer-brand,.footer-brand img{width:145px;height:72px}
+  .cinematic-hero .hero-message p{font-size:13px}
+  .cinematic-hero .hero-caption{font-size:9px}
+  .showroom .filter{font-size:12px;min-height:44px;padding:10px 13px}
+  .showroom .car,.showroom .car:nth-child(n+4){opacity:1;transform:none}
+  .showroom .car h3{font-size:25px}.showroom .car-make{font-size:11px}.showroom .car-description{font-size:12px}
+  .showroom .text-action{min-height:48px;font-size:12px;padding-left:12px;gap:8px}
+  .showroom .text-action .mini-arrow{width:30px;height:30px}
+  .showroom .collection-note{font-size:11px}
+  #car-dialog[open]{display:block;width:calc(100vw - 20px);height:auto;max-height:calc(100dvh - 20px);overflow-y:auto;border-radius:13px}
+  .dialog-header{position:sticky;top:0;min-height:61px;padding:8px 14px}
+  .dialog-header .eyebrow{font-size:9px}
+  #dialog-image,.spin-viewer{height:auto;width:100%;min-height:0;max-height:none}
+  #dialog-image{height:260px;padding:17px}
+  .spin-viewer{padding:6px 12px 8px;overflow:visible}
+  .spin-stage{max-height:none;margin:0;aspect-ratio:3/2}
+  .spin-controls{min-height:55px;margin:0;padding:0}
+  .spin-controls label{font-size:11px}
+  .spin-status{font-size:11px;min-height:28px;margin:0 3px}
+  .dialog-body{display:block;overflow:visible;border:0;padding:23px 20px 18px}
+  .dialog-body h2{font-size:34px;margin:11px 0 12px}
+  .dialog-body>#dialog-description{font-size:13px;margin-bottom:14px}
+  .dialog-contact{padding-top:22px}
+  .dialog-contact textarea{min-height:80px}
+  .dialog-actions{position:sticky;bottom:0;z-index:4;grid-template-columns:1fr 1fr;padding:10px 0 calc(10px + env(safe-area-inset-bottom));margin:0 -1px;background:#f5f5f2;border-top:1px solid #d2d3cf;box-shadow:0 -12px 24px #f5f5f2e8}
+}
+@media(max-width:390px){.showroom .filter{padding-inline:11px}.dialog-actions .copy-action,.dialog-actions .button{min-height:48px}}
+@media(max-width:360px){.dialog-actions{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.cinematic-hero::after{transition:none}.preview-motion .brand-strip>*{opacity:1;transform:none;animation:none!important}.preview-motion .brand-strip.is-visible>*{animation:none!important}.showroom .car,.showroom .car:nth-child(n+4){opacity:1;transform:none!important;transition:none}#car-dialog[open],.spin-viewer:not([hidden]) .spin-stage{animation:none!important}}
+.motion-paused .brand-strip>*{opacity:1;transform:none;animation:none!important}
+.motion-paused .showroom .car,.motion-paused .showroom .car:nth-child(n+4){opacity:1;transform:none!important}
+.motion-paused #car-dialog[open],.motion-paused .spin-viewer:not([hidden]) .spin-stage{animation:none!important}
+@media(forced-colors:active){.showroom .text-action,.dialog-facts span,.dialog-actions .copy-action{border:1px solid ButtonText}.showroom .text-action::before{display:none}.focus-dot{background:CanvasText}}
