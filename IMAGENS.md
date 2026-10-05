@@ -12,6 +12,10 @@ Prompt final usado na ferramenta integrada imagegen (background-extraction): Rem
 
 Derivado final atual: assets/car-c180-coupe.png. O recorte anterior permanece em assets/car-c180.png como arquivo de trabalho sem uso no site. As imagens têm finalidade ilustrativa; não indicar vínculo oficial de concessionária nem estoque atual.
 
-## Cenário do hero
+## Hero Estúdio
 
-`assets/hero-showroom-sunset.jpg` é a versão otimizada da imagem escolhida pelo usuário em 2026-10-05 para o hero. O showroom ao pôr do sol e a paisagem ao fundo foram gerados por IA; não representam a loja nem Paty do Alferes. O hero identifica cenário e carro como ilustrativos. A logo `assets/jc-logo.jpg` é a imagem original da JC Veículos já presente no projeto.
+`assets/hero-c180-studio.jpg` é a versão otimizada da fotografia conceitual escolhida pelo usuário no mockup Estúdio em 2026-10-05. Foi gerada com a ferramenta integrada ImageGen usando a C180 Coupé prata do projeto como referência visual de modelo, cor e ângulo. Não é fotografia de um veículo do estoque nem da loja. O hero identifica a imagem como conceitual e o veículo como ilustrativo. A logo `assets/jc-logo.jpg` é a imagem original da JC Veículos já presente no projeto.
+
+Prompt final (ads-marketing): “Photorealistic full-bleed desktop landing-page hero photograph for a Brazilian car dealership concept. Use the attached silver Mercedes-Benz C180 Coupé as reference for body shape, silver color and front three-quarter angle. Make the car commanding, roughly 80% of the image width, fully visible, grounded on wet charcoal concrete in a minimalist black auto studio. Low wheel-height camera, white strip-light reflections, subtle haze, deep blacks, upper-left quiet for HTML copy. Wide landscape. No words, signage, watermark, people or other cars. Illustrative concept image, not a photograph of the dealership.”
+
+O cenário anterior permanece em `assets/hero-showroom-sunset.jpg` como parte do histórico dos mockups, mas não é usado na página atual.
